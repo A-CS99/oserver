@@ -17,8 +17,9 @@ infer = YOLO("runs/detect/train10/weights/best.pt") # 加载训练结果最好�
 cv2.namedWindow('YOLO Detection')  # 创建一个窗口
 cv2.setMouseCallback('YOLO Detection', onMouse)  # 设置鼠标回调函数
 
-print('显示摄像头图像，点击窗口或按任意键退出')
 success, frame = cameraCapture.read()  # 读取摄像头的当前帧
+print(f"Frame: {frame}")
+print(f"Frame shape: {frame.shape}")
 while success and cv2.waitKey(1) == -1 and not clicked:  # 当循环没结束，并且剩余的帧数大于零时进行下面的程序
     results = infer.predict(frame,
                             show=False,# 如果可能，显示出来（True时），YOLO内置函数
